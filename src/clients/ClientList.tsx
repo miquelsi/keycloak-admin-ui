@@ -81,18 +81,18 @@ export const ClientList = ({ baseUrl, clients }: ClientListProps) => {
       <Table
         variant={TableVariant.compact}
         cells={[
-          { title: t("Client ID"), cellFormatters: [enabled()] },
-          t("Type"),
-          { title: t("Description"), cellFormatters: [emptyFormatter()] },
+          { title: t("clientID"), cellFormatters: [enabled()] },
+          t("type"),
+          { title: t("description"), cellFormatters: [emptyFormatter()] },
           {
-            title: t("Home URL"),
+            title: t("homeURL"),
             cellFormatters: [externalLink(), emptyFormatter()],
           },
         ]}
         rows={data}
         actions={[
           {
-            title: t("common:Export"),
+            title: t("common:export"),
             onClick: (_, rowId) => {
               const clientCopy = JSON.parse(JSON.stringify(data[rowId].client));
               clientCopy.clientId = convertClientId(clientCopy.clientId);
@@ -113,23 +113,20 @@ export const ClientList = ({ baseUrl, clients }: ClientListProps) => {
             },
           },
           {
-            title: t("common:Delete"),
+            title: t("common:delete"),
             onClick: (_, rowId) => {
               try {
                 httpClient.doDelete(
                   `/admin/realms/master/clients/${data[rowId].client.id}`
                 );
-                add(t("The client has been deleted"), AlertVariant.success);
+                add(t("clientDeletedSucess"), AlertVariant.success);
               } catch (error) {
-                add(
-                  `${t("Could not delete client:")} ${error}`,
-                  AlertVariant.danger
-                );
+                add(`${t("clientDeleteError")} ${error}`, AlertVariant.danger);
               }
             },
           },
         ]}
-        aria-label={t("Client list")}
+        aria-label={t("clientList")}
       >
         <TableHeader />
         <TableBody />
