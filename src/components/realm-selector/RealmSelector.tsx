@@ -1,6 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import { Realm } from "../../realm/models/Realm";
+import { RealmRepresentation } from "../../realm/models/Realm";
 
 import {
   Dropdown,
@@ -10,11 +10,11 @@ import {
   Divider,
 } from "@patternfly/react-core";
 
-import style from "./realm-selector.module.css";
+import "./realm-selector.css";
 
 type RealmSelectorProps = {
   realm: string;
-  realmList: Realm[];
+  realmList: RealmRepresentation[];
 };
 
 export const RealmSelector = ({ realm, realmList }: RealmSelectorProps) => {
@@ -37,13 +37,13 @@ export const RealmSelector = ({ realm, realmList }: RealmSelectorProps) => {
   return (
     <Dropdown
       id="realm-select"
-      className={style.dropdown}
+      className="keycloak__realm_selector__dropdown"
       isOpen={open}
       toggle={
         <DropdownToggle
           id="realm-select-toggle"
           onToggle={() => setOpen(!open)}
-          className={style.toggle}
+          className="keycloak__realm_selector_dropdown__toggle"
         >
           {currentRealm}
         </DropdownToggle>
