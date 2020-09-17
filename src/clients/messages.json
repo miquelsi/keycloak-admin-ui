@@ -14,7 +14,7 @@
     "loginTheme": "Login theme",
     "consentRequired": "Consent Required",
     "displayOnClient": "Display client on screen",
-    "consentScreenText": "Client consent screen text"
+    "consentScreenText": "Client consent screen text",
     "createClient": "Create client",
     "importClient": "Import client",
     "clientID": "Client ID",
